@@ -1,6 +1,6 @@
 # Sole Edit
 
-Responsive pre-loved footwear storefront built with HTML, CSS and JavaScript.
+Responsive pre-loved footwear storefront with categories, search, filters, product pages, wishlist, cart and guest demo checkout.
 
 ## Run locally
 
@@ -8,18 +8,13 @@ Responsive pre-loved footwear storefront built with HTML, CSS and JavaScript.
 python3 -m http.server 8000 --directory dist
 ```
 
-Open http://localhost:8000. No build or dependencies required.
-
-## Features
-
-- Men, Women, Kids, Sports, Casual, Accessories, Boots and Orthopedic collections
-- Search, condition/size/price filters and sorting
-- Product details, size selection, wishlist and cart
-- Guest demo checkout and local order confirmation
-- Responsive mobile layouts
+Open http://localhost:8000. No dependencies or build step required.
 
 ## Customize
 
-Edit products and prices in `dist/app.js`, styling in `dist/style.css`, and branding in `dist/index.html`. Images are in `dist/assets/`.
+- `dist/index.html`: store name and page shell
+- `dist/style.css`: theme and responsive layouts
+- `dist/app.js`: products, prices, categories and shopping interactions
+- `dist/assets/`: product and category images
 
-Checkout is a browser-local demo. Real payments, inventory and order processing are not connected. Reference imagery must be replaced with your own authorized product assets before a commercial launch.
+Cart, wishlist and demo orders are saved in browser localStorage. Real payment, order processing and inventory services are not connected. Replace reference imagery with your authorized product photos before commercial launch.
