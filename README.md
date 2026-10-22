@@ -1,33 +1,34 @@
 # Jogglers
 
-Next.js 16 footwear storefront with a browser-local management panel at `/admin`.
+Next.js storefront preserving the original Jogglers design, with a protected Supabase management panel at `/admin`. Customers shop without signing in.
 
-## Start
+## One-time Supabase setup
 
-```bash
+1. Replace `OWNER_EMAIL_HERE` with your owner email, then run `supabase/setup.sql` in the SQL Editor of the configured Supabase project. It creates owner policies, the shared catalog, private orders, atomic checkout functions, and the public product-image bucket. It imports initial inventory once and can be rerun without replacing edits.
+2. In Authentication > URL Configuration, set Site URL to the production website origin and add `https://YOUR-DOMAIN/admin` to Redirect URLs. Keep email sign-in enabled.
+3. Open `/admin` and request a sign-in email using the registered owner email. Only the verified allowlisted account can manage the catalog or view customer details.
+4. Publish the `supabase-shared-store` branch after database setup. The public Supabase publishable key and project URL are bundled; no service-role key or database password is required in Vercel.
+
+## Development
+
+```sh
 npm ci
 npm run dev
 ```
 
-No database, environment variables, account, password, or backend service setup is required. Deploy the repository to Vercel using the included Next.js configuration.
+`npm run build` bundles the Supabase browser client and builds Next.js. `vercel.json` configures the Next.js output. Catalog and product photos are shared through Supabase; browser storage keeps only auth sessions, the shopping bag, favourites, and recent order summaries. Existing browser-local catalog edits are not automatically imported.
 
-## Manage your catalog
+## Management
 
-Open `/admin` to add, edit, hide and delete products, upload multiple photos, set cover photos, prices, stock, sizes and descriptions, and manage categories. Photos are resized automatically and saved with the catalog in localStorage.
+Add, edit, hide, or delete products; upload up to eight compressed images; set sizes, prices, stock, and descriptions; manage categories and order statuses. Catalog writes use version checks to prevent overwriting a newer change. Export backup downloads catalog and private order data; keep exports private. Images removed from products are retained to preserve order snapshots.
 
-**Changes only exist in the same browser and website origin. They are not published to other devices or customers.** The management page has no authentication because it only edits that browser's own data. Clearing site data removes saved changes. A different domain or deployment URL has its own separate storage.
-
-Use **Export backup** to download a JSON copy containing the catalog, photos and local orders. Use **Import backup** to restore it, or move it to another browser. Import replaces the receiving browser's catalog and orders after confirmation. Backups include order contact details; keep them private.
-
-Checkout saves orders and updates stock in the current browser. Orders are not transmitted to the owner, no payment is processed, and orders from other devices will not appear here. The checkout and confirmation screens explain this. A shared backend is required if you later want a real shared catalog and centralized orders.
-
-Photo compression helps conserve browser space. If storage fills up, the save is rejected with an explanatory message and the previous catalog stays intact. Remove unused photos/products and keep backups.
+Checkout calculates prices and stock in a database transaction. Cash on Delivery only; delivery is Rs. 250, free from Rs. 5,000. Retried orders deduct stock once. Tracking requires the order reference and checkout email. Cancellation restores stock once. Customers cannot list orders or write inventory. Shared catalog refreshes on page load, tab focus, and every 30 seconds outside checkout.
 
 ## Checks
 
-```bash
+```sh
 npm test
 npm run build
 ```
 
-The original theme, category layout and cart are retained. Branding is Jogglers. No database/API dependencies remain.
+Database tests run the actual migration in a local PostgreSQL-compatible engine with mocked Supabase auth/storage schemas. They verify RLS, owner-only access, pricing, stock, retries, cancellation, tracking privacy and safe repeated setup. Live upload/auth verification requires the Supabase schema and production redirect configuration.
