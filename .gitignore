@@ -1,5 +1,8 @@
-.DS_Store
-.env
-.env.*
 node_modules/
-*.tar.gz
+.next/
+.data/
+.env*
+!.env.example
+.vercel/
+.DS_Store
+legacy/
