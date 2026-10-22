@@ -2,12 +2,11 @@
 
 Next.js storefront preserving the original Jogglers design, with a protected Supabase management panel at `/admin`. Customers shop without signing in.
 
-## One-time Supabase setup
+## Admin access
 
-1. Replace `OWNER_EMAIL_HERE` with your owner email, then run `supabase/setup.sql` in the SQL Editor of the configured Supabase project. It creates owner policies, the shared catalog, private orders, atomic checkout functions, and the public product-image bucket. It imports initial inventory once and can be rerun without replacing edits.
-2. In Authentication > URL Configuration, set Site URL to the production website origin and add `https://YOUR-DOMAIN/admin` to Redirect URLs. Keep email sign-in enabled.
-3. Open `/admin` and request a sign-in email using the registered owner email. Only the verified allowlisted account can manage the catalog or view customer details.
-4. Publish the `supabase-shared-store` branch after database setup. The public Supabase publishable key and project URL are bundled; no service-role key or database password is required in Vercel.
+Open `/admin` and enter the private admin password. No email link or inbox is needed. The Supabase session is remembered in the browser and refreshes automatically; clearing browser data or signing out requires the password again. Use Password in the dashboard to change it. The password is never bundled in the frontend or committed to this repository.
+
+The dedicated Supabase Auth account is provisioned separately and allowlisted in the private admin table. The SQL setup file creates the shared catalog, private order storage, owner-only policies and product-image bucket. Existing inventory and orders are retained. Production configuration uses the public publishable key only.
 
 ## Development
 
@@ -31,4 +30,4 @@ npm test
 npm run build
 ```
 
-Database tests run the actual migration in a local PostgreSQL-compatible engine with mocked Supabase auth/storage schemas. They verify RLS, owner-only access, pricing, stock, retries, cancellation, tracking privacy and safe repeated setup. Live upload/auth verification requires the Supabase schema and production redirect configuration.
+Database tests run the actual migration in a local PostgreSQL-compatible engine with mocked Supabase auth/storage schemas. They verify RLS, owner-only access, pricing, stock, retries, cancellation, tracking privacy and safe repeated setup. Live authentication uses Supabase password sign-in and the owner allowlist.
