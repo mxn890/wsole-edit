@@ -1,50 +1,27 @@
 # Jogglers
 
-Next.js 16 storefront and private store-management panel. The original yellow, black and white storefront is preserved, including category browsing, search, filters, wishlist, cart and guest checkout.
+Next.js 16 footwear storefront with a browser-local management panel at `/admin`.
 
-## Run locally
+## Start
 
 ```bash
 npm ci
-cp .env.example .env.local
-# Set ADMIN_PASSWORD (12+ characters) and SESSION_SECRET (32+ characters).
 npm run dev
 ```
 
-Visit `/` for the shop and `/admin` for management. Customers do not need an account. Only the store owner signs in to `/admin`.
+No database, environment variables, account, password, or backend service setup is required. Deploy the repository to Vercel using the included Next.js configuration.
 
-Without DATABASE_URL, development uses a persistent PostgreSQL-compatible PGlite database in `.data/jogglers`. Production requires a PostgreSQL connection; it never writes inventory or orders to an ephemeral Vercel filesystem.
+## Manage your catalog
 
-## Production setup on Vercel
+Open `/admin` to add, edit, hide and delete products, upload multiple photos, set cover photos, prices, stock, sizes and descriptions, and manage categories. Photos are resized automatically and saved with the catalog in localStorage.
 
-1. Connect the repository, choose Next.js, and leave the root directory at the repository root. Remove any old `dist` output-directory override and old build/install-command overrides in the Vercel project settings.
-2. Connect a PostgreSQL database, preferably a pooled Neon database from Vercel Storage, and set `DATABASE_URL`.
-3. Set `ADMIN_PASSWORD` to your own long password and `SESSION_SECRET` to a random secret (e.g. `openssl rand -hex 32`) using Vercel's secret environment-variable fields. Never commit them or use a `NEXT_PUBLIC_` prefix.
-4. Deploy. The first database request creates the tables and imports the existing catalog once. No default admin password is shipped.
-5. Open `/admin` to review the existing inventory, update stock and product photos, then accept customer orders.
+**Changes only exist in the same browser and website origin. They are not published to other devices or customers.** The management page has no authentication because it only edits that browser's own data. Clearing site data removes saved changes. A different domain or deployment URL has its own separate storage.
 
-Storefront catalog pages can render the retained catalog before database setup; all management writes and checkout require the database. Setup-incomplete screens do not pretend to save anything.
+Use **Export backup** to download a JSON copy containing the catalog, photos and local orders. Use **Import backup** to restore it, or move it to another browser. Import replaces the receiving browser's catalog and orders after confirmation. Backups include order contact details; keep them private.
 
-## Store management
+Checkout saves orders and updates stock in the current browser. Orders are not transmitted to the owner, no payment is processed, and orders from other devices will not appear here. The checkout and confirmation screens explain this. A shared backend is required if you later want a real shared catalog and centralized orders.
 
-- Add, edit, hide and delete products in any category or collection.
-- Upload up to 8 PNG/JPEG/WebP photos per product (2 MB each), choose a cover photo and remove photos from the product.
-- Edit price, original price, description, brand, colour, condition, EU sizes and stock.
-- Add/edit category names and photos. A category containing products cannot be deleted until those products are moved or removed.
-- View orders with customer delivery details and update order status. Cancelling an order restores stock once; cancelled orders cannot be reopened.
-
-Images are stored in PostgreSQL alongside the catalog, so uploads and changes work across devices. Image uploads are restricted to authenticated administrators. Removed product photos are unlinked from the product; uploaded files are retained in storage to preserve order snapshots.
-
-Checkout stores orders on the server and calculates prices and shipping from current inventory. Cash on Delivery only; no card payment service is configured. Delivery is Rs. 250, free for orders from Rs. 5,000. Edit these rules in `lib/validation.mjs` and the storefront together if needed.
-
-## Structure
-
-- `app/`: Next.js App Router, private management UI and API handlers
-- `public/storefront.js`: retained storefront controller and shared-catalog integration
-- `app/globals.css`: retained storefront theme
-- `data/seed.json`: initial inventory, imported once
-- `lib/`: server storage, sessions, validation and atomic ordering
-- `public/assets/`: existing imagery
+Photo compression helps conserve browser space. If storage fills up, the save is rejected with an explanatory message and the previous catalog stays intact. Remove unused photos/products and keep backups.
 
 ## Checks
 
@@ -53,4 +30,4 @@ npm test
 npm run build
 ```
 
-The retained reference images should be reviewed and replaced with your authorized inventory photos before commercial use. No contact email, phone number or guaranteed return window has been invented.
+The original theme, category layout and cart are retained. Branding is Jogglers. No database/API dependencies remain.

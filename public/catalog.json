@@ -1,0 +1,313 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Everyday Court Sneaker",
+      "brand": "The everyday edit",
+      "category": "Men",
+      "type": "Orthopedic",
+      "img": 21,
+      "price": 4490,
+      "old": 6500,
+      "condition": "Excellent",
+      "sizes": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "color": "White",
+      "images": [
+        "/assets/21.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Cloud Knit Runner",
+      "brand": "The active edit",
+      "category": "Women",
+      "type": "Sports",
+      "img": 13,
+      "price": 3290,
+      "old": 5200,
+      "condition": "Very good",
+      "sizes": [
+        37,
+        38,
+        39
+      ],
+      "color": "Purple",
+      "images": [
+        "/assets/13.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Weekend Canvas Low",
+      "brand": "The casual edit",
+      "category": "Men",
+      "type": "Casual",
+      "img": 15,
+      "price": 2490,
+      "old": 4200,
+      "condition": "Excellent",
+      "sizes": [
+        40,
+        41,
+        42
+      ],
+      "color": "Navy",
+      "images": [
+        "/assets/15.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Classic Chelsea Boot",
+      "brand": "The essentials edit",
+      "category": "Women",
+      "type": "Boots",
+      "img": 19,
+      "price": 4990,
+      "old": 7500,
+      "condition": "Excellent",
+      "sizes": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "color": "Black",
+      "images": [
+        "/assets/19.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Little Steps Court",
+      "brand": "The junior edit",
+      "category": "Kids",
+      "type": "Orthopedic",
+      "img": 21,
+      "price": 1990,
+      "old": 3200,
+      "condition": "Very good",
+      "sizes": [
+        29,
+        30,
+        31
+      ],
+      "color": "White",
+      "images": [
+        "/assets/21.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Trail to Town Runner",
+      "brand": "The active edit",
+      "category": "Men",
+      "type": "Sports",
+      "img": 13,
+      "price": 3790,
+      "old": 5900,
+      "condition": "Excellent",
+      "sizes": [
+        41,
+        42,
+        43
+      ],
+      "color": "Purple",
+      "images": [
+        "/assets/13.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Everyday Shoe Care Kit",
+      "brand": "The care edit",
+      "category": "Accessories",
+      "type": "Accessories",
+      "img": 17,
+      "price": 690,
+      "old": 990,
+      "condition": "New",
+      "sizes": [],
+      "color": "Yellow",
+      "images": [
+        "/assets/17.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Junior Canvas Sneaker",
+      "brand": "The junior edit",
+      "category": "Kids",
+      "type": "Casual",
+      "img": 15,
+      "price": 1790,
+      "old": 2800,
+      "condition": "Very good",
+      "sizes": [
+        30,
+        31,
+        32
+      ],
+      "color": "Navy",
+      "images": [
+        "/assets/15.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "City Walk Chelsea",
+      "brand": "The essentials edit",
+      "category": "Men",
+      "type": "Boots",
+      "img": 19,
+      "price": 4790,
+      "old": 7000,
+      "condition": "Excellent",
+      "sizes": [
+        41,
+        42,
+        44
+      ],
+      "color": "Black",
+      "images": [
+        "/assets/19.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Comfort Court Low",
+      "brand": "The everyday edit",
+      "category": "Women",
+      "type": "Orthopedic",
+      "img": 21,
+      "price": 3490,
+      "old": 4900,
+      "condition": "Very good",
+      "sizes": [
+        37,
+        38,
+        39
+      ],
+      "color": "White",
+      "images": [
+        "/assets/21.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 11,
+      "name": "Playground Runner",
+      "brand": "The junior edit",
+      "category": "Kids",
+      "type": "Sports",
+      "img": 13,
+      "price": 2290,
+      "old": 3500,
+      "condition": "Excellent",
+      "sizes": [
+        30,
+        31,
+        32
+      ],
+      "color": "Purple",
+      "images": [
+        "/assets/13.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    },
+    {
+      "id": 12,
+      "name": "Off-duty Canvas",
+      "brand": "The casual edit",
+      "category": "Women",
+      "type": "Casual",
+      "img": 15,
+      "price": 2690,
+      "old": 3900,
+      "condition": "Excellent",
+      "sizes": [
+        37,
+        38,
+        39
+      ],
+      "color": "Navy",
+      "images": [
+        "/assets/15.png"
+      ],
+      "stock": 1,
+      "description": "A versatile pair for everyday adventures.",
+      "active": true
+    }
+  ],
+  "categories": [
+    {
+      "name": "Men",
+      "image": "/assets/5.png"
+    },
+    {
+      "name": "Women",
+      "image": "/assets/9.png"
+    },
+    {
+      "name": "Kids",
+      "image": "/assets/11.png"
+    },
+    {
+      "name": "Sports",
+      "image": "/assets/13.png"
+    },
+    {
+      "name": "Casual",
+      "image": "/assets/15.png"
+    },
+    {
+      "name": "Accessories",
+      "image": "/assets/17.png"
+    },
+    {
+      "name": "Boots",
+      "image": "/assets/19.png"
+    },
+    {
+      "name": "Orthopedic",
+      "image": "/assets/21.png"
+    }
+  ],
+  "orders": []
+}
